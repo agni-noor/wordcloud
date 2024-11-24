@@ -1,5 +1,41 @@
 const Form = () => {
+const paragraphs: string[] = [
+  "Women in tech often face biases and stereotypes that undermine their abilities.",
+  "Lack of mentorship and representation in leadership positions are significant barriers.",
+  "The tech industry sometimes fosters a culture that makes women feel unwelcome.",
+  "Unequal pay and limited opportunities for career advancement are common issues.",
+  "Women frequently encounter imposter syndrome due to the lack of support systems."
+];
+
+const fillerWords: string[] = [
+  "in", "and", "of", "that", "are", "a", "for", "the", "to", "is", "on", "with", "by", "often"
+];
+
+const createWordFrequencyMap = (paragraphs: string[], fillerWords: string[]): Record<string, number> => {
+  const wordFrequencyMap: Record<string, number> = {};
+
+  paragraphs.forEach(paragraph => {
+    const words = paragraph
+      .toLowerCase()
+      .replace(/[.,]/g, "") 
+      .split(/\s+/); 
+
+    words.forEach(word => {
+      if (!fillerWords.includes(word)) {
+        wordFrequencyMap[word] = (wordFrequencyMap[word] || 0) + 1;
+      }
+    });
+  });
+
+  return wordFrequencyMap;
+};
+
+const wordFrequencyMap = createWordFrequencyMap(paragraphs, fillerWords);
+
+console.log(wordFrequencyMap);
+
   return (
+
     <div className="w-full max-w-xs">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
