@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
 import "./App.css";
 import Wordcloud from "./components/Wordcloud";
 import Form from "./components/Form";
